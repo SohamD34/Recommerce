@@ -4,11 +4,15 @@ import random
 from flask_sqlalchemy import SQLAlchemy
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+import os
+
+print(os.getcwd())
+
 
 app = Flask(__name__)
 
-trending_products = pd.read_csv('models/trending_products.csv')
-train_data = pd.read_csv('models/clean_data.csv')
+trending_products = pd.read_csv('data/trending_products.csv')
+train_data = pd.read_csv('data/processed_train_data.csv')
 
 app.secret_key = "alskdjfwoeieiurlskdjfslkdjf"
 app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://root:@localhost/ecom"
@@ -71,14 +75,14 @@ def content_based_recommendations(train_data, item_name, top_n=10):
     return recommended_items_details
 
 random_image_urls = [
-    "static/img/img_1.png",
-    "static/img/img_2.png",
-    "static/img/img_3.png",
-    "static/img/img_4.png",
-    "static/img/img_5.png",
-    "static/img/img_6.png",
-    "static/img/img_7.png",
-    "static/img/img_8.png",
+    "static/img_1.png",
+    "static/img_2.png",
+    "static/img_3.png",
+    "static/img_4.png",
+    "static/img_5.png",
+    "static/img_6.png",
+    "static/img_7.png",
+    "static/img_8.png",
 ]
 
 
